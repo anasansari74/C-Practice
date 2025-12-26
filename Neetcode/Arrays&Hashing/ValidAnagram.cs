@@ -7,7 +7,8 @@ using System.Collections.Generic;
 /// Given two strings, I am using different methods to check if they are anagrams of each other.
 /// I am also trying to find the time and space complexity of each method.
 /// Current ranking:
-/// 1. Sorting
+/// 1. Dictionary (Hash map)
+/// 2. Sorting
 /// </summary>
 public class ValidAnagram
 {
@@ -16,8 +17,8 @@ public class ValidAnagram
 
     /**
     Sorting (simple approach)
-    Best, Average & Worst case: O(n log n) due to sorting 
-    Space: O(n) for storing character arrays 
+    Best, Average & Worst case: Logarithmic time complexity O(n log n) 
+    Space complexity: Constant O(n) 
     **/
     public bool UsingSort()
     {
@@ -33,6 +34,41 @@ public class ValidAnagram
             
         isAnagram = splitS.SequenceEqual(splitT);
             
-        Console.WriteLine(isAnagram);
+        return isAnagram;
+    }
+
+    /**
+    Dictionary 
+    Best, Average & Worst case: Linear time complexity O(n) 
+    Space complexity: Constant O(n) 
+    **/
+    public bool usingDictionaries(string s, string t) {
+        if (s.Length != t.Length) {
+            return false;
+        }
+
+        Dictionary<char, int> charCount = new Dictionary<char, int>();
+
+        foreach (char c in s){
+            if (charCount.ContainsKey(c)){
+                charCount[c]++;
+            }else{
+                charCount[c] = 1;
+            }
+        }
+
+        foreach (char c in t){
+            if (!charCount.ContainsKey(c)){
+                return false;
+            }
+
+            charCount[c]--;
+
+            if (charCount[c] == 0){
+                charCount.Remove(c);
+            }
+        }
+
+        return charCount.Count == 0;
     }
 }
