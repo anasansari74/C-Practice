@@ -42,7 +42,7 @@ public class ValidAnagram
     Best, Average & Worst case: Linear time complexity O(n) 
     Space complexity: Constant O(n) 
     **/
-    public bool usingDictionaries(string s, string t) {
+    public bool usingDictionaries() {
         if (s.Length != t.Length) {
             return false;
         }
