@@ -5,6 +5,9 @@ using System.Collections.Generic;
 /// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 /// You may assume that each input would have exactly one solution
 /// Return the answer with smallest index first.
+/// Ranking:
+/// 1. Dictionary Approach - O(n) time, O(n) space
+/// 2. Brute Force - Nested For Loops - O(n^2) time, O(1) space
 /// </summary>
 public class TwoSum()
 {
